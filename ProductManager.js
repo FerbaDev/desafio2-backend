@@ -50,11 +50,11 @@ class ProductManager {
   }
   //guarda el producto
   async saveProducts(arrayProductos) {
-    await fs.promises.writeFile(
-      this.path,
-      JSON.stringify(arrayProductos, null, 2)
-    );
     try {
+      await fs.promises.writeFile(
+        this.path,
+        JSON.stringify(arrayProductos, null, 2)
+      );
     } catch (error) {
       console.log("No se pudo guardar el producto ", error);
     }
@@ -85,13 +85,35 @@ class ProductManager {
     } catch (error) {
       console.log(error);
     }
-    // let producto = this.products.find((producto) => producto.id === id);
-    // producto ? { producto } : console.log("Not found");
   }
+  //fala completar esta funcion
+  async updateProduct(id) {
+    try {
+      let products = await this.readProducts();
+      let productoEncontrado = products.find((producto) => producto.id == id);
+      console.log(productoEncontrado);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  //falta terminar esta funcion
+  async deleteProduct(id) {
+    try {
+      //encontrar producto
+      let products = await this.readProducts();
 
-  updateProduct() {}
+      //encontrar indice
+      let productIndex = products.findIndex((product) => product.id === id);
+      //hacer el splice
+      let newProducts = products.splice(productIndex);
+      //ver array actualizado
+      console.log(products);
 
-  deleteProduct() {}
+      await this.saveProducts(products);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 //instanciamos
@@ -124,4 +146,5 @@ const productManager = new ProductManager();
 //productManager.getProducts();
 
 // buscamos producto por id
-productManager.getProductById(2);
+productManager.deleteProduct(1);
+//el producto se encuentra

@@ -7,14 +7,5 @@
     "code": "abc123",
     "stock": 25,
     "id": 0
-  },
-  {
-    "title": "producto prueba 2",
-    "description": "Este es OTRO producto prueba",
-    "price": 200,
-    "thumbnail": "Sin imagen",
-    "code": "abc124",
-    "stock": 25,
-    "id": 1
   }
 ]
