@@ -33,7 +33,7 @@ class ProductManager {
       };
       productManager.id++;
       productosActuales.push(newProduct);
-      await this.saveProduts(productosActuales);
+      await this.saveProducts(productosActuales);
     } catch (error) {
       console.log("Error al agregar prodcuto", error);
     }
@@ -93,15 +93,14 @@ productManager.getProducts();
 
 // //agregamos un producto
 // //nuevo producto:
-// let encendedor = {
-//   title: "encendedor",
-//   description: "Marca BIC",
-//   price: 2000,
-//   thumbnail: "",
-//   code: "ABC123",
-//   stock: 100,
-// };
-// productManager.addProduct(encendedor);
+productManager.addProduct(
+  "producto prueba",
+  "Este es un producto prueba",
+  200,
+  "Sin imagen",
+  "abc123",
+  25
+);
 
 // //consultamos producto:
 
