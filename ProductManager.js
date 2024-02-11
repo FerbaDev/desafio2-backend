@@ -111,6 +111,7 @@ productManager.addProduct(
   25
 );
 
-// //consultamos producto:
+// //consultamos nuevamente la base de productos:
+productManager.getProducts();
 
 // productManager.getProducts();
