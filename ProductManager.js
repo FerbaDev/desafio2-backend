@@ -1,6 +1,6 @@
 //se requiere file system
 
-const { error } = require("console");
+const { error, log } = require("console");
 const fs = require("fs");
 
 //ruta
@@ -35,7 +35,7 @@ class ProductManager {
       productosActuales.push(newProduct);
       await this.saveProducts(productosActuales);
     } catch (error) {
-      console.log("Error al agregar prodcuto", error);
+      console.log("Error al agregar producto", error);
     }
   }
   //leer productos
@@ -75,9 +75,18 @@ class ProductManager {
     }
   }
   //busca por id
-  getProductById(id) {
-    let prodcuto = this.products.find((producto) => producto.id === id);
-    prodcuto ? { prodcuto } : console.log("Not found");
+  async getProductById(id) {
+    try {
+      let products = await this.readProducts();
+      let productoEncontrado = products.find((producto) => producto.id == id);
+      productoEncontrado
+        ? console.log(productoEncontrado)
+        : console.log("Not found");
+    } catch (error) {
+      console.log(error);
+    }
+    // let producto = this.products.find((producto) => producto.id === id);
+    // producto ? { producto } : console.log("Not found");
   }
 
   updateProduct() {}
@@ -89,29 +98,30 @@ class ProductManager {
 const productManager = new ProductManager();
 
 //llamamos al getProducts
-productManager.getProducts();
+//productManager.getProducts();
 
 // //agregamos un producto
 // //nuevo producto:
-productManager.addProduct(
-  "producto prueba",
-  "Este es un producto prueba",
-  200,
-  "Sin imagen",
-  "abc123",
-  25
-);
+// productManager.addProduct(
+//   "producto prueba",
+//   "Este es un producto prueba",
+//   200,
+//   "Sin imagen",
+//   "abc123",
+//   25
+// );
 //probamos otro producto para chequear que el id no se repita
-productManager.addProduct(
-  "producto prueba 2",
-  "Este es OTRO producto prueba",
-  200,
-  "Sin imagen",
-  "abc124",
-  25
-);
+// productManager.addProduct(
+//   "producto prueba 2",
+//   "Este es OTRO producto prueba",
+//   200,
+//   "Sin imagen",
+//   "abc124",
+//   25
+// );
 
 // //consultamos nuevamente la base de productos:
-productManager.getProducts();
+//productManager.getProducts();
 
-// productManager.getProducts();
+// buscamos producto por id
+productManager.getProductById(2);

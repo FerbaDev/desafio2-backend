@@ -16,14 +16,5 @@
     "code": "abc124",
     "stock": 25,
     "id": 1
-  },
-  {
-    "title": "producto prueba 2",
-    "description": "Este es OTRO producto prueba",
-    "price": 200,
-    "thumbnail": "Sin imagen",
-    "code": "abc124",
-    "stock": 25,
-    "id": 1
   }
 ]
