@@ -31,7 +31,7 @@ class ProductManager {
         stock,
         id: ProductManager.id,
       };
-      productManager.id++;
+      ProductManager.id++;
       productosActuales.push(newProduct);
       await this.saveProducts(productosActuales);
     } catch (error) {
@@ -99,6 +99,15 @@ productManager.addProduct(
   200,
   "Sin imagen",
   "abc123",
+  25
+);
+//probamos otro producto para chequear que el id no se repita
+productManager.addProduct(
+  "producto prueba 2",
+  "Este es OTRO producto prueba",
+  200,
+  "Sin imagen",
+  "abc124",
   25
 );
 
